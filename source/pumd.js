@@ -5,7 +5,7 @@
 /**
  * Singleton MarkdownGetter
  */
-var MarkdownGetter = new function () {
+let MarkdownGetter = new function () {
 
     /**
      * Get Markdown raw text from GitHub
@@ -13,7 +13,7 @@ var MarkdownGetter = new function () {
      */
     this.getFromGitHub = function (path, callback)
     {
-        var fullpath = "https://raw.githubusercontent.com/" + path;
+        let fullpath = "https://raw.githubusercontent.com/" + path;
         return this.getMarkdown(fullpath, callback);
     };
 
@@ -35,19 +35,21 @@ var MarkdownGetter = new function () {
 
 /**
  * mdResultcallback. Pass this as new instance when get something from MarkdownGetter
- * @param {jquery div instance} divArea one of $(div.pumd)
+ * @param {jquery div instance} diletea one of $(div.pumd)
  * @param {String} content markdown raw text
  */
-var mdResultCallback = function(divArea) {
-    var div = divArea;
+let mdResultCallback = function(diletea) {
+    let div = diletea;
 
     /**
      * Push md raw text content to div which is declared when callback created
      * @param {String} content md raw text
      */
     this.push = function(content) {
-        var pre = "<pre>" + content + "</pre>";
-        div.html(pre);
+        var converter = new showdown.Converter(),
+        text = content,
+        html = converter.makeHtml(text);
+        div.html(html);
     };
     
 };
@@ -55,11 +57,11 @@ var mdResultCallback = function(divArea) {
 //Document ready. 
 $(document).ready(function() {
     //Get all PUMD area
-    var areas = $("div.pumd");
+    let areas = $("div.pumd");
     areas.each(function(idx) {
-        var path = $(this).attr("path");
-        var from = $(this).attr("from");
-        var mdraw = "";
+        let path = $(this).attr("path");
+        let from = $(this).attr("from");
+        let mdraw = "";
 
         //If path's first letter is slush('/'), remove it to combine path and url
         if(path.charAt(0) == '/') {
