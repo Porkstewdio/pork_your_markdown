@@ -1,0 +1,6 @@
+language: node_js
+ node_js:
+   - "node"
+before_script:
+  - npm install -g rollup rollup-plugin-buble rollup-plugin-minify-es
+script: npm run build
