@@ -1,0 +1,8 @@
+div.pumd {
+    margin: 6px;
+    padding: 6px;
+    border: 1px solid #ccc;
+    background-color: #fdfdfd;
+    overflow: scroll;
+    border-radius: 5px;
+}

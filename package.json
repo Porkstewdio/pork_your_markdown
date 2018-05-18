@@ -1,0 +1,31 @@
+{
+  "name": "pumd",
+  "version": "1.0.0",
+  "description": "Load and display any markdown to your html!",
+  "main": "pumd.js",
+  "directories": {
+    "example": "examples"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "rollup -c"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Porkstewdio/pork_your_markdown.git"
+  },
+  "keywords": [
+    "pumd",
+    "markdown"
+  ],
+  "author": "PorkstewDio",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Porkstewdio/pork_your_markdown/issues"
+  },
+  "homepage": "https://github.com/Porkstewdio/pork_your_markdown#readme",
+  "dependencies": {
+    "rollup-plugin-buble": "^0.19.2",
+    "rollup-plugin-minify-es": "^1.1.1"
+  }
+}
