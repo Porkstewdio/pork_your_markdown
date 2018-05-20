@@ -3,7 +3,7 @@ import minify from 'rollup-plugin-minify-es';
 export default {
   input: 'source/main.js',
   output : {
-    name : 'output/pumd.js',
+    file : 'output/pumd.js',
     format: 'iife', 
     name : "PorkUrMarkDown"
   },
