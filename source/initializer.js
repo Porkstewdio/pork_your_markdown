@@ -1,5 +1,8 @@
 import * as MDGetter from './getMarkdown';
 
+/**
+ * Initialize and run PUMD script
+ */
 export function init() {
     //MarkdownGetter
     let getter = new MDGetter.MarkdownGetter();
