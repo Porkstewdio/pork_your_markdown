@@ -8,7 +8,7 @@ You can insert .md file using URL address, or load .md from online repository di
 ## How to use
 1. Insert js files into html. (pumd.js, pumd.css, jquery)
 2. Put \<div\> tag where the .md file would be inserted.
-3. set class of \<div\> tag as pumd (\<div class="pumd"\>)
+3. Set class of \<div\> tag as pumd (\<div class="pumd"\>)
 4. Enter .md file's info into \<div\> tag's attributes.
     * Put .md file's URL address into 'url' attribute.
     * Or, Put .md file's information into other attributes.
@@ -26,5 +26,5 @@ You can insert .md file using URL address, or load .md from online repository di
 or<br>
 `<div class="pumd" username="Porkstewdio" project="pork_your_markdown" branch="master" path="README.md" from="github"></div>`
 
-## Suported online repository
+## Supported online repository
  - GitHub : github
