@@ -1,31 +1,20 @@
+
+/** regex pattern */
+const pattern = [
+    [/^#{1}[ ?]/, "<h1>", "</h1>"],
+    [/^#{2}[ ?]/, "<h2>", "</h2>"],
+    [/^#{3}[ ?]/, "<h3>", "</h3>"],
+    [/^#{4}[ ?]/, "<h4>", "</h4>"],
+    [/^#{5}[ ?]/, "<h5>", "</h5>"],
+    [/^#{6}[ ?]/, "<h6>", "</h6>"],
+]
+
 /**
  * Markdown to HTML module class
  */
 export class Md2HtmlConverter {
-    rawData;
     constructor(rawData) {
         this.rawData = rawData;
-    }
-
-    /** default tag constant */
-    tag = {
-        p_o: "<p>", p_c: "</p>",
-        br: "<br>",
-        h1_o: "<h1>", h1_c: "</h1>",
-        h2_o: "<h2>", h1_c: "</h2>",
-        h3_o: "<h3>", h1_c: "</h3>",
-        h4_o: "<h4>", h1_c: "</h4>",
-        h5_o: "<h5>", h1_c: "</h5>",
-        h6_o: "<h6>", h1_c: "</h6>",
-        line: "<hr>",
-        ol_o: "<ol>", ol_c: "</ol>",
-        ul_o: "<ul>", ul_c: "</ul>",
-        li_o: "<li>", li_c: "</li>",
-        b_o: "<b>", b_c: "</b>",
-        i_o: "<i>", i_c: "</i>",
-        u_o: "<u>", u_c: "</u>",
-        bq_o: "<blockquote>", bq_c: "</blockquote>",
-        pre_o: "<pre>", pre_c: "</pre>"
     }
 
     /**
@@ -41,6 +30,29 @@ export class Md2HtmlConverter {
      * @returns {string} Converted HTML string
      */
     toHTML() {
-        
+        //1. Split data line by line.
+        let arrStr = this.rawData.split("\n");
+
+        //2. Find pattern using regex.
+        //3. If found pattern is one-line-pattern, replace
+        let i;
+        for(i=0; i<arrStr.length; i++) {
+            let line = arrStr[i];
+            pattern.forEach(function(ptnArr) {
+                let regexRes = ptnArr[0].exec(line);
+                if(regexRes !== undefined &&  regexRes !== null) {
+                    line = line.replace(ptnArr[0], "");
+                    line = ptnArr[1] + line + ptnArr[2];
+                }
+            });
+            arrStr[i] = line;
+        }
+
+        //4. join
+        let str = arrStr.join("");
+
+        //5. If fount pattern is multi-line-pattern, find end of pattern.
+
+        return str;
     }
 }
