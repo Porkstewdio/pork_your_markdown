@@ -1,4 +1,3 @@
-
 /** regex pattern */
 const pattern = [
     [/^#{1}[ ?]/, "<h1>", "</h1>"],
@@ -30,6 +29,10 @@ export class Md2HtmlConverter {
      * @returns {string} Converted HTML string
      */
     toHTML() {
+        let converter = new showdown.Converter(),
+            htmlstr = converter.makeHtml(this.rawData);
+        /**
+         *       우선은 좀 바쁘고 해서..md2html 직접 만들기전에 showdown.js로 대체  
         //1. Split data line by line.
         let arrStr = this.rawData.split("\n");
 
@@ -53,6 +56,8 @@ export class Md2HtmlConverter {
 
         //5. If fount pattern is multi-line-pattern, find end of pattern.
 
-        return str;
+         */
+
+        return htmlstr;
     }
 }
