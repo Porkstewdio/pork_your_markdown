@@ -29,8 +29,8 @@ export class Md2HtmlConverter {
      * @returns {string} Converted HTML string
      */
     toHTML() {
-        let converter = new showdown.Converter(),
-            htmlstr = converter.makeHtml(this.rawData);
+        const converter = new showdown.Converter(),
+                htmlstr = converter.makeHtml(this.rawData);
         /**
          *       우선은 좀 바쁘고 해서..md2html 직접 만들기전에 showdown.js로 대체  
         //1. Split data line by line.
