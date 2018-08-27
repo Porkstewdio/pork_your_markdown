@@ -11,53 +11,53 @@ import {init} from './initializer';
  */
 
 /** is jQuery loaded */
-let jQueryLoaded = false;
+let isJQueryLoaded = false;
 /** is showdown.js loaded */
-let showdownLoaded = false;
+let isShowdownLoaded = false;
 /** is DOM loaded */
-let domLoaded = false;
+let isDomLoaded = false;
 
 // Check jquery
 if(!window.jQuery) {
     // JQuery is not loaded. load it.
-    let jq = document.createElement('script');
-    jq.setAttribute("src","https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js");
-    jq.onload = function() {
-        jQueryLoaded = true;
+    const jQueryScript = document.createElement('script');
+    jQueryScript.setAttribute("src","https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js");
+    jQueryScript.onload = function() {
+        isJQueryLoaded = true;
         callInit();
     }
-    document.head.appendChild(jq);
+    document.head.appendChild(jQueryScript);
 } else {
     // Jquery is loaded already. Just try to call init method.
-    jQueryLoaded = true;
+    isJQueryLoaded = true;
     callInit();
 }
 
 // Check showdown
 if(!window.showdown) {
     // Showdown.js is not loaded. load it.
-    let sd = document.createElement('script');
-    sd.setAttribute("src","https://cdnjs.cloudflare.com/ajax/libs/showdown/1.8.6/showdown.min.js");
-    sd.onload = function() {
-        showdownLoaded = true;
+    const showDownScript = document.createElement('script');
+    showDownScript.setAttribute("src","https://cdnjs.cloudflare.com/ajax/libs/showdown/1.8.6/showdown.min.js");
+    showDownScript.onload = function() {
+        isShowdownLoaded = true;
         callInit();
     }
-    document.head.appendChild(sd);
+    document.head.appendChild(showDownScript);
 } else {
     // Showdown.js is loaded already. Just try to call init method.
-    showdownLoaded = true;
+    isShowdownLoaded = true;
     callInit();
 }
 
 // On Document is ready
 document.addEventListener("DOMContentLoaded", function(evt) {
-    domLoaded = true;
+    isDomLoaded = true;
     callInit();
 });
 
 function callInit() {
     // Check three things are all loaded
-    if(jQueryLoaded && showdownLoaded && domLoaded) {
+    if(isJQueryLoaded && isShowdownLoaded && isDomLoaded) {
         // Three things are all loaded. Call init().
         init();
     }
