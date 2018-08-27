@@ -1,3 +1,4 @@
+import {Md2HtmlConverter} from "./md2html"
 /**
  * MarkdownGetter
  */
@@ -55,7 +56,8 @@ export class mdResultCallback {
      * @param {String} content md raw text
      */
     push (content) {
-        let converter = new showdown.Converter(), text = content, html = converter.makeHtml(text);
+        let converter = new Md2HtmlConverter(content);
+        let html = converter.toHTML();
         this.div.html(html);
     };
     
